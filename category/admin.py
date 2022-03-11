@@ -1,5 +1,9 @@
+from pyexpat import model
 from django.contrib import admin
 from .models import Category
 
 # Register your models here.
-admin.site.register(Category)
+class CetegoryAdmin(admin.ModelAdmin):
+     prepopulated_fields = {'slug': ('category_name', )}
+     list_display =('category_name','slug')
+admin.site.register(Category, CetegoryAdmin)
