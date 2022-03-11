@@ -125,3 +125,7 @@ STATIC_ROOT = BASE_DIR/'static'
 STATICFILES_DIRS = [
     'myCart/static',
 ]
+
+#media file configure
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR/'media'
