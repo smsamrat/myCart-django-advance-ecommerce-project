@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.shortcuts import get_object_or_404, render
 from store.models import Product
 from category.models import Category
@@ -18,3 +19,13 @@ def store(request,category_slug=None):
     }
     return render(request,'store/store.html',cotnext)
 
+def product_detail(request,category_slug,product_detail):
+    try:
+        single_product = Product.objects.get(category__slug=category_slug,slug=product_detail)
+    except Exception as e:
+        raise e
+    context ={
+        'single_product':single_product
+    }
+
+    return render(request,'store/product_detail.html',context)
